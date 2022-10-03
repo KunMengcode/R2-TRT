@@ -1,0 +1,619 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="TesnorRT民间中文文档">
+      
+      
+        <meta name="author" content="Kun Meng">
+      
+      
+        <link rel="canonical" href="http://tenosrrt.doc.zhiliao.ink/%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/">
+      
+      <link rel="icon" href="../nvidia.svg">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.9">
+    
+    
+      
+        <title>快速入门指南 - TesnorRT - 中文文档</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.1d29e8d0.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.cbb835fc.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#000000">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="black" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href=".." title="TesnorRT - 中文文档" class="md-header__button md-logo" aria-label="TesnorRT - 中文文档" data-md-component="logo">
+      
+  <img src="../nvidia.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            TesnorRT - 中文文档
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              快速入门指南
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href=".." class="md-tabs__link">
+      简介
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  <li class="md-tabs__item">
+    <a href="./" class="md-tabs__link md-tabs__link--active">
+      快速入门指南
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="TesnorRT - 中文文档" class="md-nav__button md-logo" aria-label="TesnorRT - 中文文档" data-md-component="logo">
+      
+  <img src="../nvidia.svg" alt="logo">
+
+    </a>
+    TesnorRT - 中文文档
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        简介
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          快速入门指南
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        快速入门指南
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1.介绍
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2tensorrt" class="md-nav__link">
+    2.安装TensorRT的方法
+  </a>
+  
+    <nav class="md-nav" aria-label="2.安装TensorRT的方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    2.1. 容器安装
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-debian" class="md-nav__link">
+    2.2. Debian 安装
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-pip-wheel" class="md-nav__link">
+    2.3. pip Wheel 文件安装
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1.介绍
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2tensorrt" class="md-nav__link">
+    2.安装TensorRT的方法
+  </a>
+  
+    <nav class="md-nav" aria-label="2.安装TensorRT的方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    2.1. 容器安装
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-debian" class="md-nav__link">
+    2.2. Debian 安装
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-pip-wheel" class="md-nav__link">
+    2.3. pip Wheel 文件安装
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+  <h1>快速入门指南</h1>
+
+<p><font color="#76b900" size="3"><strong>摘要</strong></font></p>
+<p>本 NVIDIA TensorRT 8.4.3 快速入门指南是想要尝试 TensorRT SDK 的开发人员的起点；具体来说，本文演示了如何快速构造应用程序，以便在 TensorRT 引擎上运行推断。</p>
+<p>确保您熟悉 <a href="../%E5%8F%91%E8%A1%8C%E8%AF%B4%E6%98%8E/"><font color="#76b900">NVIDIA TensorRT 发行说明</font></a>，了解最新的新功能和已知问题。</p>
+<p>有关先前发布的 TensorRT 安装文档，请参阅<a href="../%E6%A1%A3%E6%A1%88/"><font color="#76b900"> TensorRT 档案。</font></a></p>
+<h2 id="1"><font color="#76b900">1.介绍</font></h2>
+<p>TensorRT ™ 是 NVIDIA® 的一个 SDK ，用于优化经过训练的深度学习模型，以实现高性能推理。 TensorRT 包含一个用于训练深度学习模型的深度学习推理优化器，以及用于执行的 runtime 。</p>
+<p>在您选择的框架中训练您的深度学习模型后， TensorRT 使您能够以更高的吞吐量和更低的延迟运行它。 </p>
+<p>图1.使用 TensorRT 的深度学习开发一般流程</p>
+<p><img alt="img.png" src="../images/000001.png" />
+本指南涵盖了 TensorRT 中可用的基本安装、转换和运行时选项，以及它们的最佳时间。</p>
+<p>下面是每个章节的概要总结</p>
+<ul>
+<li>
+<p><strong><a href="#Install"><font color="#76b900">安装 TensorRT </font></a></strong></p>
+<p>提供了多种简单的安装TensorRT的方法</p>
+</li>
+<li>
+<p><strong><a href="#Ecosystem"><font color="#76b900">TensorRT 生态</font></a></strong></p>
+<p>描述了一个简单的流程图，以显示不同类型的转换和部署工作流，并讨论其缺点。</p>
+</li>
+<li>
+<p><strong><a href="#ONNX"><font color="#76b900">使用 ONNX 的部署示例</font></a></strong></p>
+<p>研究转换和部署模型的基本步骤。它将介绍本指南其余部分中的使用概念，并指导您完成优化推理执行所必须做出的决策</p>
+</li>
+<li>
+<p><strong><a href="#TF-TRT"><font color="#76b900">TF-TRT 框架集成</font></a></strong></p>
+<p>在Google ® TensorFlow (TF) 中引入了TensorRT (TRT)</p>
+</li>
+<li>
+<p><strong><a href="#ONNX-T-D"><font color="#76b900">ONNX 转换和部署</font></a></strong></p>
+<p>提供了TensorFlow和Pytorch的ONNX导出概述，以及详细的Jupyter</p>
+</li>
+<li>
+<p><strong><a href="#Runtime-Api"><font color="#76b900">使用 TensorRT Runtime API</font></a></strong></p>
+<p>提供了一个教程演示使用 TensorRT C++ 和 Python API 对图像进行语义分割。</p>
+</li>
+</ul>
+<p>关于快速部署模型的高级应用程序，请阅读<a href="https://github.com/triton-inference-server/server/blob/r20.12/docs/quickstart.md"><font color="#76b900"> NVIDIA Triton™ 推理服务器快速构建</font></a>。</p>
+<h2 id="2tensorrt"><h2 id="Install"><font color="#76b900">2.安装TensorRT的方法</font></h2></h2>
+<ul>
+<li>
+<p>容器安装</p>
+</li>
+<li>
+<p>Debian文件安装</p>
+</li>
+<li>
+<p>仅从 <code>pip</code> wheel 文件安装</p>
+</li>
+</ul>
+<p>关于TensorRT的其他方法请阅读<a href="../%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/"><font color="#76b900">NVIDIA TensorRT安装指南</font></a>。</p>
+<p>对于已经熟悉 TensorRT 并希望快速运行其应用程序、正在使用包含 cuDNN 的 NVIDIA CUDA ® 容器或希望设置自动化的高级用户，请按照网络安装说明进行操作（请阅读<a href="../%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/"><font color="#76b900">使用 NVIDIA 机器学习网络进行 Debian 安装</font></a>）。</p>
+<h3 id="21"><font color="#76b900">2.1. 容器安装</font></h3>
+<p>本节介绍 NVIDIA 定期发布和维护的定制虚拟机映像（VMI）。NVIDIA NGC 公司 是一家经认证的公共云平台，用户可以访问有关如何浏览 <a href="https://catalog.ngc.nvidia.com/"><font color="#76b900">NGC网站</font></a> 和标识可用NGC容器和标记以在其VMI上运行的特定设置说明。
+在每个云提供商上，NVIDIA 发布定制的 GPU 优化虚拟机映像（VMI），并定期更新操作系统和驱动程序。这些 VMI 针对最新一代 NVIDIA GPU 的性能进行了优化。使用这些 VMI 在具有 A100、V100 或 T4 GPU 的云托管虚拟机实例上部署NGC托管的容器、模型和资源，可确保深度学习、机器学习和 HPC 工作负载的最佳性能。
+要在公共云上部署 TensorRT 容器，请遵循<a href="https://docs.nvidia.com/ngc/ngc-deploy-public-cloud/index.html"><font color="#76b900"> NGC 认证的公共云平台相关的步骤</font></a>。</p>
+<h3 id="22-debian"><font color="#76b900">2.2. Debian 安装</font></h3>
+<p>本节包含开发人员安装说明。此安装方法适用于新用户或希望完整安装的开发人员用户，包括 C++ 和 Python API 的示例和文档。</p>
+<p><font color="#76b900" size="3"><strong>关于此任务</strong></font></p>
+<p>对于已经熟悉 TensorRT 并希望快速运行其应用程序、正在使用包含 cuDNN 的 NVIDIA CUDA ® 容器或希望设置自动化的高级用户，请按照网络安装说明进行操作（请阅读<a href="../%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/"><font color="#76b900">使用 NVIDIA 机器学习网络进行 Debian 安装</font></a>）。</p>
+<blockquote>
+<p>注：</p>
+<ul>
+<li>
+<p>以下命令是 amd64 的示例，对于 arm64 这些命令是相同的</p>
+</li>
+<li>
+<p>使用此方法安装 Python 包时，必须使用 pip 手动安装依赖项</p>
+</li>
+</ul>
+</blockquote>
+<p><font color="#76b900" size="3"><strong>步骤</strong></font></p>
+<ol>
+<li><a href=""><font color="#76b900">下载</font></a>与您正在使用的 Ubuntu 版本和 CPU 架构相匹配的 TensorRT 本地 Repo 文件</li>
+<li>从 Debian 本地 Repo 包安装 TensorTR 。替换<code>ubuntuxx04</code>, <code>cudax.x</code>, <code>trt8.x.x.x</code> 和 <code>yyyymmdd</code>。也就是您的特定操作系统版本、CUDA版本、TensorRT版本和软件包日期。</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nv">os</span><span class="o">=</span><span class="s2">&quot;ubuntuxx04&quot;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nv">tag</span><span class="o">=</span><span class="s2">&quot;cudax.x-trt8.x.x.x-ga-yyyymmdd&quot;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>sudo dpkg -i nv-tensorrt-repo-<span class="si">${</span><span class="nv">os</span><span class="si">}</span>-<span class="si">${</span><span class="nv">tag</span><span class="si">}</span>_1-1_amd64.deb
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>sudo apt-key add /var/nv-tensorrt-repo-<span class="si">${</span><span class="nv">os</span><span class="si">}</span>-<span class="si">${</span><span class="nv">tag</span><span class="si">}</span>/*.pub
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>sudo apt-get update
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>sudo apt-get install tensorrt
+</code></pre></div>
+<p>如果使用的是 Python 3.x :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>python3 -m pip install numpy
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>sudo apt-get install python3-libnvinfer-dev
+</code></pre></div>
+<p>将安装以下附加软件包</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>python3-libnvinfer
+</code></pre></div>
+<p>如果您计划将 TensorRT 与 TensorFlow 结合使用：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>python3 -m pip install protobuf
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>sudo apt-get install uff-converter-tf
+</code></pre></div>
+<p><code>graphsurgeon-tf</code> 包也将与前面的命令一起安装。</p>
+<p>如果您想运行需要 ONNX <code>graphsurgeon</code> 示例，或将 Python 模块用于自己的项目，请运行</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>python3 -m pip install numpy onnx
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>sudo apt-get install onnx-graphsurgeon
+</code></pre></div>
+<ol>
+<li>验证安装</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>dpkg -l <span class="p">|</span> grep TensorRT
+</code></pre></div>
+<p>您应该看到类似以下内容：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>ii  graphsurgeon-tf 8.4.3-1+cuda11.6    amd64   GraphSurgeon for TensorRT package
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>ii  libnvinfer-bin      8.4.3-1+cuda11.6    amd64   TensorRT binaries
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>ii  libnvinfer-dev      8.4.3-1+cuda11.6    amd64   TensorRT development libraries and headers
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>ii  libnvinfer-plugin-dev   8.4.3-1+cuda11.6    amd64   TensorRT plugin libraries
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>ii  libnvinfer-plugin8  8.4.3-1+cuda11.6    amd64   TensorRT plugin libraries
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>ii  libnvinfer-samples  8.4.3-1+cuda11.6    all TensorRT samples
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>ii  libnvinfer8     8.4.3-1+cuda11.6    amd64   TensorRT runtime libraries
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>ii  libnvonnxparsers-dev        8.4.3-1+cuda11.6    amd64   TensorRT ONNX libraries
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>ii  libnvonnxparsers8   8.4.3-1+cuda11.6    amd64   TensorRT ONNX libraries
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>ii  libnvparsers-dev    8.4.3-1+cuda11.6    amd64   TensorRT parsers libraries
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>ii  libnvparsers8   8.4.3-1+cuda11.6    amd64   TensorRT parsers libraries
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>ii  python3-libnvinfer  8.4.3-1+cuda11.6    amd64   Python 3 bindings for TensorRT
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>ii  python3-libnvinfer-dev  8.4.3-1+cuda11.6    amd64   Python 3 development package for TensorRT
+<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>ii  tensorrt        8.4.3.x-1+cuda11.6  amd64   Meta package of TensorRT
+<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>ii  uff-converter-tf    8.4.3-1+cuda11.6    amd64   UFF converter for TensorRT package
+<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a>ii  onnx-graphsurgeon   8.4.3-1+cuda11.6  amd64 ONNX GraphSurgeon for TensorRT package
+</code></pre></div>
+<h3 id="23-pip-wheel"><font color="#76b900">2.3. pip Wheel 文件安装</font></h3>
+<p>本节包含 仅从 pip <a href="https://pip.pypa.io/en/stable/reference/pip_wheel/"><font color="#76b900">wheel 文件</font></a>安装 TensorRT 的说明</p>
+<p><font color="#76b900" size="3"><strong>关于此任务</strong></font></p>
+<blockquote>
+<p>注：虽然 TensorTR 包也包含 pip Wheel 文件，但这些 Wheel 文件需要安装 <code>.deb</code> 或 <code>.rpm</code> 包的其余部分，并不能单独工作，<code>pip</code> 安装的 TensorRT Wheel 文件的不同之处在于，它是完全独立的和可安装的，不在需要 <code>.deb</code> 或 <code>.rpm</code> 文件。</p>
+</blockquote>
+<p><code>pip</code> 可安装的 <code>nvidia tensorrt</code> Python wheel 文件仅支持 Python3.6 到 3.10 和 CUDA 11.x 版本，不适用于其他 Python 或 CUDA 版本。当前仅支持 Linux 操作系统和 x86_64 体系结构 CPU 。这些 wheel 文件预计可以在 CentOS 7 或更新版本以及 Ubuntu 18.04 或更新版本上运行。</p>
+<blockquote>
+<p>注：如果您没有 root 访问权限，那么您是在 Python 虚拟环境之外运行的，或者出于任何其他原因。如果您希望用户安装，请将 <code>--user</code> 附加 <code>pip</code> 命令中</p>
+</blockquote>
+<h2 id="Ecosystem">TensorRT生态</h2>
+
+<h2 id="ONNX">使用ONNX的部署示例</h2>
+
+<h2 id="TF-TRT">TF-TRT框架集成</h2>
+
+<h2 id="ONNX-T-D">ONNX转换和部署</h2>
+
+<h2 id="Runtime-Api">使用TensorRT Runtime API</h2>
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            回到页面顶部
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="页脚" >
+      
+        
+        <a href=".." class="md-footer__link md-footer__link--prev" aria-label="上一页: 简介" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              简介
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2022 鲲梦
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.indexes", "navigation.top"], "search": "../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\uff0c\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.6c7ad80a.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
