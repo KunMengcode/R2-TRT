@@ -12,7 +12,8 @@ nav:
     - "R^2 TensorRT": index.md
     - "关于本项目": about/关于本项目.md
     - "如何参与": about/如何参与.md
-  - "快速入门指南": 快速入门指南.md
+  - 入门:
+    - "快速入门指南": 快速入门指南.md
 
 #Git
 #repo_url: https://github.com/KunMengcode/knowledge-base
